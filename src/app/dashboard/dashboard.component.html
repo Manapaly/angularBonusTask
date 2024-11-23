@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+    <h1>User Management Dashboard</h1>
+  
+    <p *ngIf="message" class="error-message">{{ message }}</p>
+  
+    <h2>Add New User</h2>
+    <form (ngSubmit)="addUser()">
+      <input
+        type="text"
+        placeholder="Enter name"
+        [(ngModel)]="newUser.name"
+        name="name"
+        required
+      />
+      <input
+        type="number"
+        placeholder="Enter age"
+        [(ngModel)]="newUser.age"
+        name="age"
+        required
+      />
+      <button type="submit">Add User</button>
+    </form>
+  
+    <h2>All Users</h2>
+    <ul>
+      <li *ngFor="let user of users">
+        <div class="user-item">
+          <p>
+            Name: {{ user.name }} <br />
+            Age: {{ user.age }}
+          </p>
+          <button (click)="updateUser(user)">Update</button>
+          <button (click)="deleteUser(user.id)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
